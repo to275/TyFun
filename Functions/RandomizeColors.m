@@ -1,7 +1,6 @@
 s = settings;
 sc = s.matlab.colors;
 fn = fieldnames(sc);
-fn = [fn{:} 'BackgroundColor']';
 for i = 1:numel(fn)
     fni = fn{i};
     try
