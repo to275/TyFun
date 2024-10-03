@@ -27,7 +27,7 @@ end
 % ------------------
 
 function a = special_case
-switch randi(12)
+switch randi(13)
    case 1
       a = 'why not?';
    case 2
@@ -52,6 +52,8 @@ switch randi(12)
       a = 'in the beginning, God created the heavens and the earth...';
    case 12
       a = 'don''t you have something better to do?';
+    case 13
+      a = 'This is left as an exercise to the reader';
 end
 
 function a = phrase
