@@ -1,4 +1,4 @@
-function savegif(filename,ims,fps)
+function savegif(filename,ims,fps,loops)
 % function savegif(filename,ims,fps)
 % THis script takes input images stored in ims and converts them into a gif
 % format with a frame rate defined by fps. The gif is saved using the input
@@ -7,7 +7,9 @@ function savegif(filename,ims,fps)
 % INPUTS - filename: A string name for the saved gif (no .gif in name).
 %   ims: a collection of image objects representing each image in the gif
 %   fps: an integer number of frames per second.
-% The total duration of the gif will be length(ims)/fps.
+%   loops: an intger number of times you want the gif to repeat, default infinite (regular gif)
+% 
+% The time duration of the gif in seconds will be length(ims)/fps.
 %
 % To generate ims, use the following psedocode when making your matlab
 % figures in a for loop:
@@ -25,18 +27,23 @@ function savegif(filename,ims,fps)
 %   frame = getframe(fg)       % convert the figure into a frame object
 %   ims{i} = frame2im(frame);  % save as an image
 % end                        % end of plotting loop
-% savegif(filename,ims,fps)  % save the gif
+% savegif(filename,ims,fps)  % save the gif (note, since loops was not defined, this creates an
+%                            % infinitely looping gif)
 
-    disp(['saving ', filename])
-    
-    for i = 1:length(ims)
-        [A,map] = rgb2ind(ims{i},256); % convert to saveable format
-        if i==1
-            imwrite(A,map,filename,"gif",LoopCount=0,DelayTime = 1/fps)
-        else
-            imwrite(A,map,filename,"gif",WriteMode='append',DelayTime = 1/fps)
-        end
+if ~exist('loops','var')
+    loops = Inf; % set the default loop count to infinity
+end
+
+disp(['saving ', filename])
+
+for i = 1:length(ims)
+    [A,map] = rgb2ind(ims{i},256); % convert to saveable format
+    if i==1
+        imwrite(A,map,filename,"gif",LoopCount=loops,DelayTime = 1/fps)
+    else
+        imwrite(A,map,filename,"gif",WriteMode='append',DelayTime = 1/fps)
     end
-    disp([filename, ' saved'])
+end
+disp([filename, ' saved'])
 
 end
