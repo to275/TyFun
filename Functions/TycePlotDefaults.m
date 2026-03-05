@@ -24,7 +24,8 @@ addParameter(p,'Size',defaultSize,validSize);
 
 parse(p,varargin{:})
 
-%% asigen defaults
+% reset everything
+reset(groot)
 
 % plotting
 set(0,'DefaultLineLineWidth',1.5); % line thickness
@@ -37,7 +38,7 @@ set(0,'DefaultAxesFontName','Times New Roman'); % font name
 set(0,'DefaultAxesFontSize',12); % font size
 
 % figure
-set(0,'DefaultFigureUnits','inches'); % set units to inches
+
 
 
 % set journal specifics
@@ -53,7 +54,9 @@ end
 % set size specifics
 switch lower(p.Results.Size)
     case 'standard'
+        set(0,'DefaultFigureUnits','inches'); % set units to inches
         set(0,'DefaultFigurePosition',[11 3 3.5 3.5])
     case 'full'
+        set(0,'DefaultFigureUnits','inches'); % set units to inches
         set(0,'DefaultFigurePosition',[11 3 7 3.5])
 end
