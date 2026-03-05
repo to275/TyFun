@@ -12,20 +12,19 @@ function savegif(filename,ims,fps)
 % To generate ims, use the following psedocode when making your matlab
 % figures in a for loop:
 %
-% filename = 'yourfilename'; % name of your savefile  (don't include any . extension)
-% fps = fps;                 % frames per second 
-% for i = 1:T                % start plotting loop (T total figures)
-%   clf                        % clear the content of the figure before plotting the new frame
+% filename = 'yourfilename' % name of your savefile  (don't include any . extension)
+% for i = 1:xx              % start plotting loop
+%   clf                       % clear the content of the figure before plotting the new frame
 % 
-%   plot(...)                  % plot the current frame (this can be as long as you need it to
-%                              % be and includes any figure formatting that happens before saving)
+%   plot(...)                 % plot the current frame (this can be as long as you need it to
+%                             % be and includes any figure formatting that happens before saving)
 %
-%   fg = gcf                   % figure handle for the current figure
-%   drawnow                    % force the figure to update
-%   frame = getframe(fg)       % convert the figure into a frame object
-%   ims{i} = frame2im(frame);  % save as an image
-% end                        % end of plotting loop
-% savegif(filename,ims,fps)  % save the gif
+%   fg = gcf                  % figure handle for the current figure
+%   drawnow                   % force the figure to update
+%   frame = getframe(fg)      % convert the figure into a frame object
+%   ims{i} = frame2im(frame); % save as an image
+% end                       % end of plotting loop
+% savegif(filename,ims,fps) % save the gif
 
     disp(['saving ', filename])
     
@@ -40,3 +39,4 @@ function savegif(filename,ims,fps)
     disp([filename, ' saved'])
 
 end
+
